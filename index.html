@@ -1,0 +1,60 @@
+<html>
+<head>
+  <link rel="manifest" href="manifest.json"></link>
+  <meta charset="utf-8">
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+    $(() => {
+      $(document.body).css({
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+        backgroundColor: 'bisque'
+      });
+      let container = $('<div>');
+      container.css({
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      });
+      let atualizar = $('<button>');
+      atualizar.css({
+        borderRadius: 50,
+        backgroundColor: 'cornflowerblue',
+        color: 'white',
+        padding: 10,
+        fontSize: 20,
+        fontFamily: 'arial',
+        marginTop: 150
+      });
+      atualizar.text('Qual é a resposta?');
+      $(document.body).append(atualizar);
+      let resposta = $('<div>');
+      resposta.css({
+        fontFamily: 'arial',
+        fontSize: 50,
+        marginTop: '30%'
+      });
+      container.append(atualizar);
+      container.append(resposta);
+      $(document.body).append(container);
+      atualizar.on('click', () => {
+        let textoResposta = 'SIM';
+        resposta.css({
+          color: 'green'
+        });
+        if (Math.random() > 0.5) {
+          textoResposta = 'NÃO';
+          resposta.css({
+            color: 'red'
+          });
+        }
+        resposta.text(textoResposta);
+      });
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>
