@@ -46,18 +46,20 @@
       container.append(resposta);
       $(document.body).append(container);
       atualizar.on('click', () => {
-        resposta.hide();
-        let textoResposta = 'SIM';
-        resposta.css({
-          color: 'green'
-        });
-        if (Math.random() > 0.5) {
-          textoResposta = 'NÃO';
+        resposta.fadeOut(1000);
+        setTimeout(() => {
+          let textoResposta = 'SIM';
           resposta.css({
-            color: 'red'
+            color: 'green'
           });
-        }
-        resposta.text(textoResposta);
+          if (Math.random() > 0.5) {
+            textoResposta = 'NÃO';
+            resposta.css({
+              color: 'red'
+            });
+          }
+          resposta.text(textoResposta);
+        }, 1000);
         resposta.fadeIn(1000);
       });
     });
