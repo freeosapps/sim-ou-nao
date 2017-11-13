@@ -3,20 +3,24 @@
   <link rel="manifest" href="manifest.json"></link>
   <meta charset="utf-8">
   <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+    body {
+      background-color: bisque;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      height: 100vh
+    }
+  </style>
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
     $(() => {
-      $(document.body).css({
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-        backgroundColor: 'bisque'
-      });
       let container = $('<div>');
       container.css({
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        flex: '1 1 auto'
       });
       let atualizar = $('<button>');
       atualizar.css({
@@ -25,8 +29,7 @@
         color: 'white',
         padding: 10,
         fontSize: 20,
-        fontFamily: 'arial',
-        marginTop: 150
+        fontFamily: 'arial'
       });
       atualizar.text('Qual é a resposta?');
       $(document.body).append(atualizar);
@@ -34,12 +37,13 @@
       resposta.css({
         fontFamily: 'arial',
         fontSize: 50,
-        marginTop: '30%'
+        marginTop: 10
       });
       container.append(atualizar);
       container.append(resposta);
       $(document.body).append(container);
       atualizar.on('click', () => {
+        resposta.hide();
         let textoResposta = 'SIM';
         resposta.css({
           color: 'green'
@@ -51,6 +55,7 @@
           });
         }
         resposta.text(textoResposta);
+        resposta.fadeIn(1000);
       });
     });
   </script>
