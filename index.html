@@ -5,7 +5,8 @@
   <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <style>
     body {
-      background-color: bisque;
+      background-image: url('background.jpg');
+      background-position: center;
       display: flex;
       align-items: center;
       flex-direction: row;
@@ -28,24 +29,31 @@
       let atualizar = $('<button>');
       atualizar.css({
         borderRadius: 50,
-        backgroundColor: 'cornflowerblue',
-        color: 'white',
+        backgroundColor: 'white',
+        color: 'gray',
         padding: 10,
         fontSize: 20,
-        fontFamily: 'arial'
+        fontFamily: 'arial',
+        borderStyle: 'solid',
+        borderColor: 'gray'
       });
       atualizar.text('Qual é a resposta?');
       $(document.body).append(atualizar);
       let resposta = $('<div>');
       resposta.css({
         fontFamily: 'arial',
+        fontWeight: 'bold',
         fontSize: 50,
-        marginTop: 10
+        marginTop: 10,
+        backgroundColor: 'white',
+        borderRadius: 50,
+        padding: 5
       });
       container.append(atualizar);
       container.append(resposta);
       $(document.body).append(container);
       atualizar.on('click', () => {
+        atualizar.fadeOut(1000);
         resposta.fadeOut(1000);
         setTimeout(() => {
           let textoResposta = 'SIM';
@@ -59,8 +67,9 @@
             });
           }
           resposta.text(textoResposta);
+          resposta.fadeIn(1000);
+          atualizar.fadeIn(1000);
         }, 1000);
-        resposta.fadeIn(1000);
       });
     });
   </script>
